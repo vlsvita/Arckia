@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+usage() {
+  cat <<EOF
+arckia — persistent architect memory toolkit
+
+Usage:
+  arckia install [target] [platforms] [--sync-kernel] [--force-agents]
+  arckia sync                    Regenerate AGENTS.md from core/KERNEL.md
+  arckia validate [root]         Check token/structure budgets
+  arckia consolidate ...         Move verified ROADMAP item to ADR
+  arckia fossilize [options]     Archive oldest ADR RECENT entries (manual confirm)
+  arckia fetch-context --domain TAG [--query text]
+
+Examples:
+  arckia install . all --sync-kernel
+  arckia consolidate --match "OAuth2" --rationale "E2E passed"
+  arckia fossilize --dry-run
+  arckia fetch-context --domain DB --query "postgresql"
+  arckia validate .
+EOF
+}
+
+cmd="${1:-}"
+shift || true
+
+case "$cmd" in
+  install)
+    exec bash "$SCRIPT_DIR/install.sh" "$@" ;;
+  sync)
+    exec bash "$SCRIPT_DIR/sync-agents.sh" ;;
+  validate)
+    root="${1:-.}"
+    exec bash "$SCRIPT_DIR/validate.sh" "$root" ;;
+  consolidate)
+    exec bash "$SCRIPT_DIR/consolidate.sh" "$@" ;;
+  fossilize)
+    exec bash "$SCRIPT_DIR/fossilize.sh" "$@" ;;
+  fetch-context)
+    exec bash "$SCRIPT_DIR/fetch-context.sh" "$@" ;;
+  ""|-h|--help|help)
+    usage
+    ;;
+  *)
+    echo "Unknown command: $cmd" >&2
+    usage >&2
+    exit 1
+    ;;
+esac

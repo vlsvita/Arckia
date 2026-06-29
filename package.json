@@ -1,0 +1,26 @@
+{
+  "name": "arckia",
+  "version": "0.4.0",
+  "description": "Cross-platform senior architect agent with persistent memory (VISION / ROADMAP / ADR)",
+  "license": "MIT",
+  "bin": {
+    "arckia": "scripts/arckia"
+  },
+  "scripts": {
+    "sync": "bash scripts/sync-agents.sh",
+    "install:all": "bash scripts/install.sh . all --sync-kernel",
+    "validate": "bash scripts/validate.sh .",
+    "consolidate": "bash scripts/consolidate.sh",
+    "fossilize": "bash scripts/fossilize.sh",
+    "fetch-context": "bash scripts/fetch-context.sh"
+  },
+  "files": [
+    "core",
+    "docs",
+    "adapters",
+    "scripts",
+    "templates",
+    "AGENTS.md",
+    ".agents"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "case \"$CLAUDE_FILE_PATH\" in *docs/architecture/*) bash scripts/validate.sh . || exit 1 ;; esac"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+# Arckia (legacy entry — prefer AGENTS.md + .cursor/rules/arckia.mdc)
+
+This file is kept for backward compatibility. Primary instructions:
+
+@./AGENTS.md
+
+For full kernel: @./core/KERNEL.md

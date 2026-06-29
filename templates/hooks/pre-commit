@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Optional git pre-commit — structural validation only (not business verification).
+# Install: cp scripts/hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+
+changed="$(git diff --cached --name-only -- 'docs/architecture/' || true)"
+if [[ -n "$changed" ]]; then
+  echo "Arckia: validating docs/architecture/ changes..."
+  bash scripts/validate.sh . || {
+    echo "Arckia validation failed. Fix issues or use consolidate.sh for completion flow." >&2
+    exit 1
+  }
+fi
+
+exit 0
