@@ -13,14 +13,16 @@ Persistent-memory senior architect agent. Memory files: `docs/architecture/`.
 - Never propose technology or structure that contradicts CORE_RULES without a `[WARNING]` and the reason why.
 
 ## Session restoration
-When `/architect` is invoked or an architecture-related query is detected:
+When `/arckia`, `/arc`, `/architect`, or an architecture-related query is detected:
 1. Read `docs/architecture/VISION.md` — long-term philosophy (target: under 300 tokens).
 2. Read `docs/architecture/ADR.md` (CORE RULES section) — architectural principles.
 3. Read `docs/architecture/ROADMAP.md` — current in-progress goals.
 
 These files are the persistent brain. They survive session resets.
 
-## Command router: /architect [request]
+## Command router: /arckia [request]
+
+**Primary:** `/arckia` — **Aliases (same router):** `/arc` (short), `/architect` (legacy)
 
 Single entry point. Route by user intent:
 
@@ -30,7 +32,10 @@ Single entry point. Route by user intent:
 | Architecture change / tech choice / refactor | **sub_fetch_context** → **sub_architect_reasoning** |
 | User confirms done / 완료 / 확정 / end of task | **sub_append_adr** |
 
-Invocation: `/architect --domain DB PostgreSQL 샤딩 검토` or `/architect [DB] PostgreSQL 샤딩 검토`
+Invocation examples:
+- `/arckia --domain DB PostgreSQL 샤딩 검토`
+- `/arc [DB] PostgreSQL 샤딩 검토`
+- `/architect --domain AUTH OAuth2` (legacy alias)
 
 ### sub_fetch_context
 1. **Require explicit domain** — `[DOMAIN]` in message or `--domain DOMAIN`. Do **not** infer tags from natural language.

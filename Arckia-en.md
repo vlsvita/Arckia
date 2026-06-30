@@ -19,7 +19,7 @@ Rather than spawning sub-agents that sever memory, the main agent that has worke
 ## File-System-Based Persistent Memory Mechanism
 
 - **Session independence**: When the AI model's short-term memory (session) closes or the machine reboots, all settled memory is physically persisted as markdown text files on the local disk (`docs/architecture/`).
-- **Long-term memory runtime restoration**: When a new chat (session) opens and the AI starts blank, the moment `/architect` is invoked on the first question, the `.cursorrules` switch pulls the brain files from disk and restores existing context at 100% sync rate.
+- **Long-term memory runtime restoration**: When a new chat (session) opens and the AI starts blank, the moment `/arckia` (aliases: `/arc`, `/architect`) is invoked on the first question, the `.cursorrules` switch pulls the brain files from disk and restores existing context at 100% sync rate.
 - **Universality**: Regardless of environment setup or version control (Git), the markdown text on disk is the ultimate source of truth—from personal local projects to large repositories.
 
 ```
@@ -36,9 +36,11 @@ my-project/
 
 ## 3. Single Entry Point and Sub-Skill Specification
 
-Developers use only the single `/architect` command without managing files manually. Cross-editing between plan and history files and tag-based partial extraction are handled by the agent invoking sub-skills autonomously.
+Developers use **`/arckia`** (aliases: `/arc`, `/architect`) without managing files manually. Cross-editing between plan and history files and tag-based partial extraction are handled by the agent invoking sub-skills autonomously.
 
-## Top-Level Router: /architect [request]
+## Top-Level Router: /arckia [request]
+
+- **Primary:** `/arckia` — **Aliases:** `/arc` (short), `/architect` (legacy)
 
 - **Behavior**: Activates when the user requests adding, removing, or changing features; branches to sub-skills based on query intent.
 

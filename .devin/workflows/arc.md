@@ -1,6 +1,6 @@
-# /architect
+# /arc
 
-Legacy alias for `/arckia`. See `arckia.md` workflow — same behavior.
+Alias for `/arckia`. See `arckia.md` workflow — same behavior.
 
 You are Arckia. Read `docs/architecture/VISION.md` (CURRENT PHASE), `ADR.md` (CORE RULES), and `ROADMAP.md`.
 

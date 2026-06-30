@@ -93,6 +93,9 @@ install_platform() {
       else
         force_file "$ROOT/adapters/cursor/.cursor/rules/arckia.mdc" "$TARGET/.cursor/rules/arckia.mdc"
       fi
+      for cmd in arckia.md arc.md architect.md; do
+        merge_file "$ROOT/adapters/cursor/.cursor/commands/$cmd" "$TARGET/.cursor/commands/$cmd"
+      done
       ;;
     claude)
       merge_file "$ROOT/adapters/claude/CLAUDE.md" "$TARGET/CLAUDE.md"
@@ -104,6 +107,8 @@ install_platform() {
     devin|windsurf)
       merge_file "$ROOT/adapters/devin/.devin/rules/arckia-architect.md" "$TARGET/.devin/rules/arckia-architect.md"
       merge_file "$ROOT/adapters/devin/.windsurf/rules/arckia-architect.md" "$TARGET/.windsurf/rules/arckia-architect.md"
+      merge_file "$ROOT/adapters/devin/.devin/workflows/arckia.md" "$TARGET/.devin/workflows/arckia.md"
+      merge_file "$ROOT/adapters/devin/.devin/workflows/arc.md" "$TARGET/.devin/workflows/arc.md"
       merge_file "$ROOT/adapters/devin/.devin/workflows/architect.md" "$TARGET/.devin/workflows/architect.md"
       ;;
     codex)

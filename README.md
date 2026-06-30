@@ -9,7 +9,7 @@ Cross-platform plugin: one memory model (`docs/architecture/`), five harness ada
 | **Cursor** | `AGENTS.md` + `.cursor/rules/arckia.mdc` | always-on rule |
 | **Claude Code** | `CLAUDE.md` + `.claude/rules/` | `@AGENTS.md` import |
 | **Codex** | `AGENTS.md` | native discovery |
-| **Devin / Windsurf** | `AGENTS.md` + `.devin/rules/` | model_decision + `/architect` workflow |
+| **Devin / Windsurf** | `AGENTS.md` + `.devin/rules/` | model_decision + `/arckia` workflow (aliases `/arc`, `/architect`) |
 | **Antigravity** | `AGENTS.md` + `.agent/rules/` | model_decision |
 
 Shared skill path: `.agents/skills/arckia/SKILL.md` (Cursor, Codex, Devin, Gemini CLI).
@@ -37,12 +37,14 @@ npm run validate
 ## Usage
 
 ```
-/architect [request]
+/arckia [request]     # primary
+/arc [request]        # short alias
+/architect [request]  # legacy alias
 ```
 
 Examples:
-- `/architect [AUTH] OAuth2 소셜 로그인 스펙 추가`
-- `/architect PostgreSQL 대신 Redis 캐시 레이어 제안 검토`
+- `/arc --domain AUTH OAuth2 소셜 로그인 스펙 추가`
+- `/arckia --domain DB PostgreSQL 샤딩 검토`
 - `결제 모듈 구현 완료했어, 테스트 통과 — 확정` → triggers sub_append_adr
 
 ## Memory files
