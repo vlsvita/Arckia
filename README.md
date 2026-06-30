@@ -43,9 +43,9 @@ npm run validate
 ```
 
 Examples:
-- `/arc --domain AUTH OAuth2 소셜 로그인 스펙 추가`
-- `/arckia --domain DB PostgreSQL 샤딩 검토`
-- `결제 모듈 구현 완료했어, 테스트 통과 — 확정` → triggers sub_append_adr
+- `/arc --domain AUTH add OAuth2 social login spec`
+- `/arckia --domain DB review PostgreSQL sharding`
+- `Payment module is done and tests passed — finalize` → triggers sub_append_adr
 
 ## Memory files
 
@@ -82,7 +82,7 @@ docs/architecture/      ← persistent project memory
 
 ## Known limits
 
-- **User verification stays manual** — `consolidate.sh` runs only when you (or the agent after you say 확정) invoke it; nothing auto-marks features complete.
+- **User verification stays manual** — `consolidate.sh` runs only when you (or the agent after you say finalize) invoke it; nothing auto-marks features complete.
 - **Structural enforcement** — `validate.sh` runs on `docs/architecture/` edits (optional pre-commit / Claude hook); blocks token drift and ROADMAP↔ADR inconsistency.
 - Rule compliance for non-file actions is still LLM-dependent.
 - Devin workspace rules cap at 12,000 chars per file — KERNEL stays well under this.
@@ -92,7 +92,7 @@ docs/architecture/      ← persistent project memory
 ```bash
 npm run sync          # Regenerate AGENTS.md from core/KERNEL.md
 npm run validate      # Structural checks (tokens, sync, ROADMAP/ADR consistency)
-npm run consolidate -- --match "OAuth2" --rationale "E2E passed"  # After user confirms 완료
+npm run consolidate -- --match "OAuth2" --rationale "E2E passed"  # After user confirms completion
 npm run fossilize -- --dry-run   # Preview archive when ADR > 25 lines
 npm run fetch-context -- --domain DB --query "postgresql"
 bash scripts/arckia install . all --sync-kernel --force-agents
@@ -102,4 +102,4 @@ Optional hooks (install copies templates):
 - `templates/hooks/pre-commit` → `scripts/hooks/pre-commit` (copy to `.git/hooks/`)
 - `templates/hooks/claude-settings.json` → merged into `.claude/settings.json` on claude platform install
 
-See `Arckia.md` for the full product spec.
+See `Arckia-en.md` for the full product spec (`Arckia.md` is the Korean version).
